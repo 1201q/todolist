@@ -1,0 +1,69 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid #5c4d4d61;
+  padding: 7px 50px;
+}
+
+.header h3 {
+  margin: 0;
+}
+
+.header a {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+  color: rgb(31, 31, 31);
+}
+
+.mainLogoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(234, 234, 234, 0.58);
+}
+
+.mainLogoContainer svg {
+  padding-right: 10px;
+  padding-top: 2px;
+}
+
+.userHi {
+  display: flex;
+  align-items: center;
+}
+
+.userHi__text {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.userHi button {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  border-radius: 3px;
+  padding: 3px 7px;
+  border: 1px solid #5c4d4d61;
+  color: rgb(68, 68, 68);
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+.userHi button:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    padding: 7px 30px;
+  }
+
+  .userHi__text {
+    display: none;
+  }
+}
