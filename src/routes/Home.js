@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Todo from "components/Todo";
+import CalendarComponents from "components/Calendar";
 import TodoComponents from "components/TodoComponents";
 import { authService, dbService, storageService } from "fbase";
+import styles from "components/styles/CalendarStyle.css";
+import moment from "moment";
+import Sidebar from "components/Sidebar";
 
 const Home = ({ userObj }) => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+
+  console.log();
 
   useEffect(() => {
     dbService
@@ -27,7 +33,7 @@ const Home = ({ userObj }) => {
 
     const todo = {
       text: newTodo,
-      date: Date.now(),
+      date: moment()._d,
       userid: userObj.uid,
       category: "카테고리",
       done: false,
@@ -48,9 +54,12 @@ const Home = ({ userObj }) => {
     setNewTodo(value);
   };
 
+  console.log(todos);
+
   return (
-    <div>
-      <div>
+    <div className="main">
+      <Sidebar />
+      <div className="contentsContainer">
         <form onSubmit={onSubmit}>
           <input type="text" onChange={onChange} value={newTodo} />
           <input type="submit" value="업로드" />
@@ -62,9 +71,11 @@ const Home = ({ userObj }) => {
               todoText={todo.text}
               userObj={userObj}
               todoId={todo.id}
+              tododone={todo.done}
             />
           ))}
         </div>
+        <div className="calendarContainer">{/* <CalendarComponents /> */}</div>
       </div>
     </div>
   );

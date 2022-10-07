@@ -1,11 +1,29 @@
 import Todo from "./Todo";
 import React, { useState, useEffect } from "react";
-import styles from "components/TodoStyle.css";
+import styles from "components/styles/TodoStyle.css";
 import { dbService } from "fbase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTwitter,
+  faGoogle,
+  faGithub,
+  faXbox,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faCheck,
+  faFileEdit,
+  faPen,
+  faPenSquare,
+  faRemove,
+  faRightToBracket,
+  faUserCircle,
+  faUserEdit,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
-const TodoComponents = ({ todoText, userObj, todoId }) => {
-  const [done, setDone] = useState(false);
-  const [editing, setEditing] = useState(false);
+const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
+  const [done, setDone] = useState(tododone);
+  const [editing, setEditing] = useState(true);
   const [editingTodo, setEditingTodo] = useState(todoText);
 
   const onChange = (event) => {
@@ -16,12 +34,10 @@ const TodoComponents = ({ todoText, userObj, todoId }) => {
     await dbService.doc(`${userObj.uid}/${todoId}`).update({
       text: editingTodo,
     });
-    setEditing(!editing);
   };
 
   const onEditBtnClick = () => {
     setEditing(!editing);
-    setEditingTodo(todoText);
   };
 
   const onDeleteBtnClick = async () => {
@@ -40,17 +56,50 @@ const TodoComponents = ({ todoText, userObj, todoId }) => {
   };
   return (
     <div className="todo">
-      <li>{todoText}</li>
-      <button onClick={onEditBtnClick}>수정</button>
-      {editing ? (
-        <form onSubmit={onEditSubmit}>
-          <input type="text" defaultValue={editingTodo} onChange={onChange} />
-          <input type="submit" value="수정" />
+      <input
+        type="checkbox"
+        value={done}
+        onChange={onCheck}
+        className="doneCheckbox"
+        checked={done}
+      />
+      {/* <li className="todoText">{todoText}</li> */}
+      <div className="submitContainer">
+        <form onSubmit={onEditSubmit} className="formContainer">
+          <input
+            type="text"
+            defaultValue={editingTodo}
+            onChange={onChange}
+            className={editing ? "editInputdisabled" : "editInputabled"}
+            disabled={editing}
+          />
+
+          <div class="editRemoveBtnContainer">
+            <button type="submit" className="editBtn" onClick={onEditBtnClick}>
+              {editing ? (
+                <FontAwesomeIcon
+                  icon={faPen}
+                  size="2x"
+                  style={{ color: "#393939" }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  size="2x"
+                  style={{ color: "rgb(41, 177, 0)" }}
+                />
+              )}
+            </button>
+            <button onClick={onDeleteBtnClick} className="removeBtn">
+              <FontAwesomeIcon
+                icon={faRemove}
+                size="2x"
+                style={{ color: "red" }}
+              />
+            </button>
+          </div>
         </form>
-      ) : null}
-      <button onClick={onDeleteBtnClick}>삭제</button>
-      <input type="checkbox" value={done} onChange={onCheck} />
-      {done ? "했음" : "안했음"}
+      </div>
     </div>
   );
 };

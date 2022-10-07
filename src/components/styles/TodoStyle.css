@@ -1,0 +1,66 @@
+.todo {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  box-shadow: 2px 2px rgb(241, 241, 241);
+  width: 600px;
+}
+
+.todoText {
+  list-style: none;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.editInputdisabled {
+  background-color: white;
+  width: 450px;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 9px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+}
+
+.editInputabled {
+  width: 450px;
+  background-color: white;
+  border: none;
+  padding: 5px 9px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #393939;
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formContainer button {
+  background: none;
+  border: none;
+  border-radius: 100px;
+}
+
+.formContainer button:hover {
+  cursor: pointer;
+}
+
+.editRemoveBtnContainer {
+  display: flex;
+}
+
+.submitContainer {
+  width: 100%;
+  display: flex;
+}

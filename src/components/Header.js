@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AppRouter from "./Router";
 import { authService } from "fbase";
 import { useHistory } from "react-router-dom";
-import styles from "./HeaderStyle.css";
+import styles from "./styles/HeaderStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStickyNote } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +20,7 @@ function Header({ userObj }) {
         <a className="mainLogo" href="/">
           <FontAwesomeIcon
             icon={faStickyNote}
-            color={"black"}
+            color={"white"}
             className="logo"
           />
           Todo!

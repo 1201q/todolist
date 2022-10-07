@@ -1,0 +1,31 @@
+.Calendar {
+  width: 90%;
+  padding-left: 5px;
+  font-size: 10px;
+  border: 1px solid #5c4d4d61;
+  border-radius: 3px;
+  font-family: 나눔고딕, "NanumGothic", Nanum Gothic, sans-serif;
+  background-color: white;
+}
+
+.Calendarbtn {
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: white;
+  width: 14%;
+  height: 20%;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.Calendarbtn:hover {
+  background-color: rgb(255, 208, 208);
+  cursor: pointer;
+}
+
+.Calendartrashbtn {
+  border-radius: 3px;
+  background-color: white;
+  width: 14%;
+  height: 20%;
+}
