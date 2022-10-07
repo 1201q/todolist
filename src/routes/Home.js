@@ -64,7 +64,7 @@ const Home = ({ userObj }) => {
           <input type="text" onChange={onChange} value={newTodo} />
           <input type="submit" value="업로드" />
         </form>
-        <div>
+        <div className="todoContainer">
           {todos.map((todo) => (
             <TodoComponents
               key={todo.id}
@@ -75,7 +75,6 @@ const Home = ({ userObj }) => {
             />
           ))}
         </div>
-        <div className="calendarContainer">{/* <CalendarComponents /> */}</div>
       </div>
     </div>
   );

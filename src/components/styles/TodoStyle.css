@@ -1,49 +1,52 @@
 .todo {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  height: 100%;
   background-color: white;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
-  margin-bottom: 5px;
-  padding: 5px 10px;
   box-shadow: 2px 2px rgb(241, 241, 241);
-  width: 600px;
 }
 
-.todoText {
-  list-style: none;
-  font-size: 1rem;
+.formContainer {
+  display: flex;
+}
+
+.submitContainer {
+  width: 100%;
+}
+
+.contentsContainer {
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
+
+.todoContainer {
+  width: 90%;
 }
 
 .editInputdisabled {
   background-color: white;
-  width: 450px;
+  width: 100%;
   border: none;
   border-radius: 3px;
   padding: 5px 9px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: black;
 }
 
 .editInputabled {
-  width: 450px;
+  width: 100%;
   background-color: white;
   border: none;
   padding: 5px 9px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #393939;
-}
-
-.formContainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .formContainer button {
@@ -57,10 +60,5 @@
 }
 
 .editRemoveBtnContainer {
-  display: flex;
-}
-
-.submitContainer {
-  width: 100%;
   display: flex;
 }

@@ -2,7 +2,6 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 body {
-  height: 100vh;
   padding: 0;
   margin: 0;
   color: rgb(31, 31, 31);
@@ -10,6 +9,7 @@ body {
 }
 
 .main {
+  width: 100%;
   display: flex;
 }
 

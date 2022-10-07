@@ -1,10 +1,9 @@
 .sidebar {
-  width: 250px;
+  width: 200px;
   height: 100vh;
   padding-top: 20px;
   background-color: #f6f8f9;
   border-right: 0.5px solid #f9f9f981;
-  margin-right: 20px;
   list-style: none;
   font-weight: 600;
   font-size: 20px;
@@ -16,8 +15,9 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 800px) {
   .sidebar {
     display: none;
+    width: 0;
   }
 }
