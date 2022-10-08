@@ -1,9 +1,8 @@
-import Todo from "./Todo";
 import React, { useState, useEffect } from "react";
-import styles from "components/styles/TodoStyle.css";
 import { dbService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPen, faRemove } from "@fortawesome/free-solid-svg-icons";
+import styles from "components/styles/TodoStyle.css";
 
 const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
   const [done, setDone] = useState(tododone);
@@ -15,6 +14,7 @@ const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
   };
 
   const onEditSubmit = async (event) => {
+    event.preventDefault();
     await dbService.doc(`${userObj.uid}/${todoId}`).update({
       text: editingTodo,
     });
@@ -24,20 +24,21 @@ const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
     setEditing(!editing);
   };
 
-  const onDeleteBtnClick = async () => {
+  const onDeleteBtnClick = async (event) => {
+    event.preventDefault();
     const ok = window.confirm("삭제할까요?");
     if (ok) {
       await dbService.doc(`${userObj.uid}/${todoId}`).delete();
     }
   };
-  const onDelete = () => {};
-  const onEdit = () => {};
-  const onCheck = async (event) => {
+
+  const onCheck = async () => {
     setDone(!done);
     await dbService.doc(`${userObj.uid}/${todoId}`).update({
       done: !done,
     });
   };
+
   return (
     <div className="todo">
       <div className="checkboxContainer">

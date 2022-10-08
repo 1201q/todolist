@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Todo from "components/Todo";
-import CalendarComponents from "components/Calendar";
-import TodoComponents from "components/TodoComponents";
 import { authService, dbService, storageService } from "fbase";
-import styles from "components/styles/CalendarStyle.css";
 import moment from "moment";
 import Sidebar from "components/Sidebar";
+import TodoComponents from "components/TodoComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faPen,
-  faPlus,
-  faRemove,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ userObj }) => {
   const [todos, setTodos] = useState([]);
@@ -30,14 +22,12 @@ const Home = ({ userObj }) => {
           ...doc.data(),
         }));
         setTodos(todosArray);
-        console.log(todosArray);
       });
   }, []);
 
   // 새로운 newtodo
   const onSubmit = async (event) => {
     event.preventDefault();
-
     const todo = {
       text: newTodo,
       date: moment()._d,
@@ -61,8 +51,6 @@ const Home = ({ userObj }) => {
     setNewTodo(value);
   };
 
-  console.log(todos);
-
   return (
     <div className="main">
       <Sidebar />
@@ -82,7 +70,6 @@ const Home = ({ userObj }) => {
               style={{ color: "#393939" }}
             />
           </button>
-          {/* <input type="submit" value="TODO!" className="newTodoBtn" /> */}
         </form>
         <div className="todoContainer">
           {todos.map((todo) => (

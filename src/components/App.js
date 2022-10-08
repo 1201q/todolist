@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import AppRouter from "./Router";
 import { useState } from "react";
 import { authService } from "fbase";
+import { Ring } from "@uiball/loaders";
+import styles from "components/styles/LoadingStyle.css";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -22,12 +24,21 @@ function App() {
       setLoading(true);
     });
   }, []);
+
   return (
-    <div className="maincontainer">
+    <div className="mainContainer">
       {loading ? (
         <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
       ) : (
-        "Loading..."
+        <div className="loadingContainer">
+          <Ring
+            className="loading"
+            size={50}
+            lineWeight={8}
+            speed={3}
+            color="black"
+          />
+        </div>
       )}
     </div>
   );

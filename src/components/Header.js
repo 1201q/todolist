@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "./Router";
 import { authService } from "fbase";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./styles/HeaderStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStickyNote } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ userObj }) {
-  console.log(userObj);
-  const history = useHistory();
   const onLogOutClick = () => {
     authService.signOut();
-    history.push("/");
   };
 
   return (
     <div className="header">
       <div className="mainLogoContainer">
-        <a className="mainLogo" href="/">
+        <Link to="/" className="mainLogo">
           <FontAwesomeIcon
             icon={faStickyNote}
             color={"white"}
             className="logo"
           />
           Todo!
-        </a>
+        </Link>
       </div>
       {authService.currentUser ? (
         <div className="userHi">

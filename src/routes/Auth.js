@@ -1,17 +1,13 @@
 import { authService, firebaseInstance } from "fbase";
 import React, { useState } from "react";
-import styles from "styles.css";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTwitter,
-  faGoogle,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
   faRightToBracket,
-  faUserCircle,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import styles from "styles.css";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -72,9 +68,9 @@ const Auth = () => {
   return (
     <div className="auth__main">
       <h2 className="title">
-        <a href="/" className="title__anchor">
+        <Link to="/" className="title__anchor">
           TodoList
-        </a>
+        </Link>
       </h2>
       <div className="loginform">
         <form onSubmit={onSubmit} className="loginform__container">
