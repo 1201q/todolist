@@ -3,23 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "components/styles/TodoStyle.css";
 import { dbService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTwitter,
-  faGoogle,
-  faGithub,
-  faXbox,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faCheck,
-  faFileEdit,
-  faPen,
-  faPenSquare,
-  faRemove,
-  faRightToBracket,
-  faUserCircle,
-  faUserEdit,
-  faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faPen, faRemove } from "@fortawesome/free-solid-svg-icons";
 
 const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
   const [done, setDone] = useState(tododone);
@@ -56,14 +40,20 @@ const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
   };
   return (
     <div className="todo">
-      <input
-        type="checkbox"
-        value={done}
-        onChange={onCheck}
-        className="doneCheckbox"
-        checked={done}
-      />
-      {/* <li className="todoText">{todoText}</li> */}
+      <div className="checkboxContainer">
+        <input
+          type="checkbox"
+          value={done}
+          onChange={onCheck}
+          id={todoId}
+          checked={done}
+        />
+        <label
+          htmlFor={todoId}
+          className={done ? "checkboxCheckF" : "checkboxChecked"}
+        ></label>
+      </div>
+
       <div className="submitContainer">
         <form onSubmit={onEditSubmit} className="formContainer">
           <input
@@ -72,9 +62,13 @@ const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
             onChange={onChange}
             className={editing ? "editInputdisabled" : "editInputabled"}
             disabled={editing}
+            autoFocus
+            style={
+              done ? { textDecoration: "line-through", color: "gray" } : null
+            }
           />
 
-          <div class="editRemoveBtnContainer">
+          <div className="editRemoveBtnContainer">
             <button type="submit" className="editBtn" onClick={onEditBtnClick}>
               {editing ? (
                 <FontAwesomeIcon
@@ -85,7 +79,7 @@ const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
               ) : (
                 <FontAwesomeIcon
                   icon={faCheck}
-                  size="2x"
+                  size="3x"
                   style={{ color: "rgb(41, 177, 0)" }}
                 />
               )}
@@ -93,7 +87,7 @@ const TodoComponents = ({ todoText, userObj, todoId, tododone }) => {
             <button onClick={onDeleteBtnClick} className="removeBtn">
               <FontAwesomeIcon
                 icon={faRemove}
-                size="2x"
+                size="3x"
                 style={{ color: "red" }}
               />
             </button>

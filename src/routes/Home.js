@@ -6,6 +6,13 @@ import { authService, dbService, storageService } from "fbase";
 import styles from "components/styles/CalendarStyle.css";
 import moment from "moment";
 import Sidebar from "components/Sidebar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faPen,
+  faPlus,
+  faRemove,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ userObj }) => {
   const [todos, setTodos] = useState([]);
@@ -60,9 +67,22 @@ const Home = ({ userObj }) => {
     <div className="main">
       <Sidebar />
       <div className="contentsContainer">
-        <form onSubmit={onSubmit}>
-          <input type="text" onChange={onChange} value={newTodo} />
-          <input type="submit" value="업로드" />
+        <form onSubmit={onSubmit} className="newTodoContainer">
+          <input
+            type="text"
+            onChange={onChange}
+            value={newTodo}
+            className="newTodoInput"
+            placeholder="오늘 할 일을 입력하세요."
+          />
+          <button type="submit" className="newTodoBtn">
+            <FontAwesomeIcon
+              icon={faPlus}
+              size="2x"
+              style={{ color: "#393939" }}
+            />
+          </button>
+          {/* <input type="submit" value="TODO!" className="newTodoBtn" /> */}
         </form>
         <div className="todoContainer">
           {todos.map((todo) => (

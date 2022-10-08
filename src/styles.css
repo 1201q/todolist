@@ -129,14 +129,6 @@ body {
   justify-content: center;
 }
 
-.calendarContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
 @media screen and (max-width: 520px) {
   .auth__main {
     width: 100%;
@@ -144,5 +136,11 @@ body {
 
   .loginform {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .newTodoInput {
+    font-size: 1.5rem;
   }
 }
