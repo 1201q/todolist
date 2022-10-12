@@ -15,12 +15,12 @@ function Header({ userObj }) {
     <div className="header">
       <div className="mainLogoContainer">
         <Link to="/" className="mainLogo">
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={faStickyNote}
             color={"white"}
             className="logo"
-          />
-          Todo!
+          /> */}
+          TodoList!
         </Link>
       </div>
       {authService.currentUser ? (

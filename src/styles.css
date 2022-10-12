@@ -8,6 +8,13 @@ body {
   font-family: 나눔고딕, "NanumGothic", Nanum Gothic, sans-serif;
 }
 
+body svg {
+  padding: 0;
+}
+body button {
+  padding: 0;
+}
+
 .main {
   width: 100%;
   display: flex;
@@ -136,11 +143,5 @@ body {
 
   .loginform {
     width: 90%;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .newTodoInput {
-    font-size: 1.5rem;
   }
 }

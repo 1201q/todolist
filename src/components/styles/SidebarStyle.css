@@ -1,18 +1,68 @@
 .sidebar {
   width: 300px;
   height: 100vh;
-  padding-top: 20px;
   background-color: #f6f8f9;
   border-right: 0.5px solid #f9f9f981;
   list-style: none;
   font-weight: 600;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sidebarList {
-  margin: 0px 10px;
-  padding: 5px;
-  border-radius: 10px;
+.listHeader {
+  width: 100%;
+  padding-left: 25px;
+}
+
+.categoryInputContainer {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid black;
+  background: none;
+}
+
+.categoryInputBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.categoryInput {
+  width: 90%;
+  height: 100%;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-align: center;
+
+  outline: none;
+}
+
+.categoryContainer {
+  width: 90%;
+}
+.categoryBtn {
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  background: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+}
+
+.categoryBtn:hover {
+  background-color: rgba(239, 239, 239, 0.667);
 }
 
 @media screen and (max-width: 800px) {

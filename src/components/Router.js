@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../routes/Home";
 import Auth from "../routes/Auth";
 import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
@@ -11,6 +12,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
         {isLoggedIn ? (
           <Route path="/">
             <Header userObj={userObj} />
+
             <Home userObj={userObj} />
           </Route>
         ) : (
