@@ -50,10 +50,11 @@ const TodoComponents = ({
     await dbService.doc(`${userObj.uid}/${todoId}`).update({
       text: editingTodo,
     });
+    onEditBtnClick();
   };
 
   const onEditBtnClick = () => {
-    setEditing(!editing);
+    setEditing(!allEditing);
   };
 
   const onDeleteBtnClick = async (event) => {
@@ -99,57 +100,58 @@ const TodoComponents = ({
           className={done ? "checkboxCheckF" : "checkboxChecked"}
         ></label>
       </div>
+      <div className="container">
+        <div className="submitContainer">
+          <form onSubmit={onEditSubmit} className="formContainer">
+            <input
+              type="text"
+              defaultValue={editingTodo}
+              onChange={onChange}
+              className={editing ? "editInputdisabled" : "editInputabled"}
+              disabled={editing}
+              autoFocus
+              style={
+                done ? { textDecoration: "line-through", color: "gray" } : null
+              }
+            />
 
-      <div className="submitContainer">
-        <form onSubmit={onEditSubmit} className="formContainer">
-          <input
-            type="text"
-            defaultValue={editingTodo}
-            onChange={onChange}
-            className={editing ? "editInputdisabled" : "editInputabled"}
-            disabled={editing}
-            autoFocus
-            style={
-              done ? { textDecoration: "line-through", color: "gray" } : null
-            }
-          />
-          {editing ? (
-            <div className="msgContainer">
-              <li className="remainingTime">{msg}</li>
-            </div>
-          ) : null}
-
-          {editing ? null : (
-            <div className="editRemoveBtnContainer">
-              <button
-                type="submit"
-                className="editBtn"
-                onClick={onEditBtnClick}
-              >
-                {editing ? (
+            {editing ? null : (
+              <div className="editRemoveBtnContainer">
+                <button
+                  type="submit"
+                  className="editBtn"
+                  onClick={onEditSubmit}
+                >
+                  {editing ? (
+                    <FontAwesomeIcon
+                      icon={faPen}
+                      size="2x"
+                      style={{ color: "#393939" }}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      size="3x"
+                      style={{ color: "rgb(41, 177, 0)" }}
+                    />
+                  )}
+                </button>
+                <button onClick={onDeleteBtnClick} className="removeBtn">
                   <FontAwesomeIcon
-                    icon={faPen}
-                    size="2x"
-                    style={{ color: "#393939" }}
-                  />
-                ) : (
-                  <FontAwesomeIcon
-                    icon={faCheck}
+                    icon={faRemove}
                     size="3x"
-                    style={{ color: "rgb(41, 177, 0)" }}
+                    style={{ color: "red" }}
                   />
-                )}
-              </button>
-              <button onClick={onDeleteBtnClick} className="removeBtn">
-                <FontAwesomeIcon
-                  icon={faRemove}
-                  size="3x"
-                  style={{ color: "red" }}
-                />
-              </button>
-            </div>
-          )}
-        </form>
+                </button>
+              </div>
+            )}
+          </form>
+        </div>
+        {editing ? (
+          <div className="msgContainer">
+            <li className="remainingTime">{msg}</li>
+          </div>
+        ) : null}
       </div>
     </div>
   );
