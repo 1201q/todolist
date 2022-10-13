@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { authService, dbService, storageService } from "fbase";
 import moment, { min } from "moment";
 import Sidebar from "components/Sidebar";
+import Todo from "components/Todo";
 import TodoComponents from "components/TodoComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,22 +13,29 @@ import {
   faRotateRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Home = ({ userObj }) => {
+const Home = ({ userObj, onv, mode }) => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [categorys, setCategorys] = useState([]);
-  const [newCategory, setNewCategory] = useState("");
+  const [newCategory, setNewCategory] = useState();
+
+  // 시간
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   const [minDate, setminDate] = useState(
     new Date().toISOString().substring(0, 10)
   );
   const [time, setTime] = useState("");
+
+  // 상태
   const [re, setRe] = useState(false);
   const [editing, setEditing] = useState(true);
   const [open, setOpen] = useState(false);
 
+  // 모드
+
+  console.log();
+
   useEffect(() => {
-    // todo
     dbService
       .collection(`${userObj.uid}`)
       .orderBy("until")
@@ -39,7 +47,6 @@ const Home = ({ userObj }) => {
         setTodos(todosArray);
       });
 
-    //카테고리
     dbService
       .collection(`C--${userObj.uid}`)
       .orderBy("ca")
@@ -90,6 +97,13 @@ const Home = ({ userObj }) => {
     }
   };
 
+  const onCategoryChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    console.log(onv);
+  };
+
   const onReload = () => {
     setRe(!re);
   };
@@ -106,7 +120,6 @@ const Home = ({ userObj }) => {
 
   return (
     <div className="main">
-      <Sidebar userObj={userObj} />
       <div className="contentsContainer">
         <form
           onSubmit={onSubmit}
@@ -130,7 +143,6 @@ const Home = ({ userObj }) => {
             </button>
           </div>
           <div className="selectContainer">
-            {/* <li className="selectTag">언제까지: </li> */}
             <input
               type="date"
               name="date"
@@ -153,8 +165,14 @@ const Home = ({ userObj }) => {
               onChange={onChange}
               required
             >
+              <option value="">카테고리를 선택하세요.</option>
+              <option value="기본">기본 카테고리</option>
               {categorys.map((category) => (
-                <option className="selectOption" key={category.id}>
+                <option
+                  className="selectOption"
+                  key={category.id}
+                  value={category.ca}
+                >
                   {category.ca}
                 </option>
               ))}
@@ -175,7 +193,7 @@ const Home = ({ userObj }) => {
           </button>
 
           <div className="controlContainer">
-            <div className="controlContainerCategory">카테고리</div>
+            <div className="controlContainerCategory">{onv}</div>
             <div>
               <button onClick={onReload}>
                 <FontAwesomeIcon icon={faRotateRight} size="2x" />
@@ -186,19 +204,38 @@ const Home = ({ userObj }) => {
             </div>
           </div>
         </div>
-        <div className="todoContainer">
-          {todos.map((todo) => (
-            <TodoComponents
-              key={todo.id}
-              todoText={todo.text}
-              userObj={userObj}
-              todoId={todo.id}
-              tododone={todo.done}
-              todoUntil={todo.until}
-              allEditing={editing}
-            />
-          ))}
-        </div>
+
+        {mode === "all" ? (
+          <div className="todoContainer">
+            {todos.map((todo) => (
+              <TodoComponents
+                key={todo.id}
+                todoText={todo.text}
+                userObj={userObj}
+                todoId={todo.id}
+                tododone={todo.done}
+                todoUntil={todo.until}
+                allEditing={editing}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="todoContainer">
+            {todos
+              .filter((todo) => todo.category === onv)
+              .map((todo) => (
+                <TodoComponents
+                  key={todo.id}
+                  todoText={todo.text}
+                  userObj={userObj}
+                  todoId={todo.id}
+                  tododone={todo.done}
+                  todoUntil={todo.until}
+                  allEditing={editing}
+                />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

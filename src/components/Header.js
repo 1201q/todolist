@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import AppRouter from "./Router";
 import { authService } from "fbase";
 import { Link } from "react-router-dom";
 import styles from "./styles/HeaderStyle.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStickyNote } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ userObj }) {
   const onLogOutClick = () => {

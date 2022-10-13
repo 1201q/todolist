@@ -65,7 +65,8 @@ const TodoComponents = ({
     }
   };
 
-  const onCheck = async () => {
+  const onCheck = async (event) => {
+    event.preventDefault();
     setDone(!done);
     await dbService.doc(`${userObj.uid}/${todoId}`).update({
       done: !done,

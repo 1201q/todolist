@@ -1,6 +1,7 @@
 .sidebar {
   width: 300px;
   height: 100vh;
+  order: 1;
   background-color: #f6f8f9;
   border-right: 0.5px solid #f9f9f981;
   list-style: none;
@@ -23,6 +24,7 @@
   align-items: center;
   padding: 10px 0px;
   margin-bottom: 30px;
+  margin-top: 10px;
   border-bottom: 1px solid black;
   background: none;
 }
@@ -37,7 +39,7 @@
   height: 100%;
   border: none;
   background: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 100;
   text-align: center;
 
@@ -63,11 +65,4 @@
 
 .categoryBtn:hover {
   background-color: rgba(239, 239, 239, 0.667);
-}
-
-@media screen and (max-width: 800px) {
-  .sidebar {
-    display: none;
-    width: 0;
-  }
 }
