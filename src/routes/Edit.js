@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { authService, dbService, storageService } from "fbase";
 import moment, { min } from "moment";
-import TodoComponents from "components/TodoComponents";
+import Sidebar from "components/Sidebar";
+
+import SbEditComponents from "components/SbEditComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleUp,
@@ -10,7 +12,6 @@ import {
   faPen,
   faRotateRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Toast from "components/Toast";
 
 const Home = ({ userObj, onv, mode }) => {
   const [todos, setTodos] = useState([]);
@@ -31,6 +32,8 @@ const Home = ({ userObj, onv, mode }) => {
   const [open, setOpen] = useState(false);
 
   // 모드
+
+  console.log();
 
   useEffect(() => {
     dbService
@@ -61,16 +64,11 @@ const Home = ({ userObj, onv, mode }) => {
     event.preventDefault();
 
     const todo = {
-      text: newTodo,
-      date: new Date().getTime(),
-      userid: userObj.uid,
-      category: newCategory,
-      done: false,
-      until: new Date(`${date} ${time}`).getTime(),
+      ca: newTodo,
     };
 
     if (newTodo !== "") {
-      await dbService.collection(`${userObj.uid}`).add(todo);
+      await dbService.collection(`C--${userObj.uid}`).add(todo);
       setEditing(true);
       onContainerOpen(false);
     }
@@ -129,7 +127,7 @@ const Home = ({ userObj, onv, mode }) => {
               name="input"
               value={newTodo}
               className="newTodoInput"
-              placeholder="오늘 할 일을 입력하세요."
+              placeholder="카테고리를 추가해보세요."
             />
             <button type="submit" className="newTodoBtn">
               <FontAwesomeIcon
@@ -139,7 +137,7 @@ const Home = ({ userObj, onv, mode }) => {
               />
             </button>
           </div>
-          <div className="selectContainer">
+          {/* <div className="selectContainer">
             <input
               type="date"
               name="date"
@@ -174,7 +172,7 @@ const Home = ({ userObj, onv, mode }) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
         </form>
 
         <div
@@ -198,7 +196,7 @@ const Home = ({ userObj, onv, mode }) => {
           </button>
 
           <div className="controlContainer">
-            <div className="controlContainerCategory">{onv}</div>
+            <div className="controlContainerCategory">카테고리 수정</div>
             <div>
               <button onClick={onReload}>
                 <FontAwesomeIcon
@@ -218,39 +216,18 @@ const Home = ({ userObj, onv, mode }) => {
           </div>
         </div>
 
-        {mode === "all" ? (
-          <div className="todoContainer">
-            {todos.map((todo) => (
-              <TodoComponents
-                key={todo.id}
-                todoText={todo.text}
-                userObj={userObj}
-                todoId={todo.id}
-                tododone={todo.done}
-                todoUntil={todo.until}
-                allEditing={editing}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="todoContainer">
-            {todos
-              .filter((todo) => todo.category === onv)
-              .map((todo) => (
-                <TodoComponents
-                  key={todo.id}
-                  todoText={todo.text}
-                  userObj={userObj}
-                  todoId={todo.id}
-                  tododone={todo.done}
-                  todoUntil={todo.until}
-                  allEditing={editing}
-                />
-              ))}
-          </div>
-        )}
+        <div className="todoContainer">
+          {categorys.map((category) => (
+            <SbEditComponents
+              key={category.id}
+              todoId={category.id}
+              todoText={category.ca}
+              userObj={userObj}
+              allEditing={editing}
+            />
+          ))}
+        </div>
       </div>
-      <Toast />
     </div>
   );
 };

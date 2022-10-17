@@ -8,6 +8,9 @@ import {
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "styles.css";
+import Toast from "components/Toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Auth = () => {
   const [email, setEmail] = useState("");

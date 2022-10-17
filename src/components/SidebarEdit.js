@@ -5,13 +5,13 @@ import { dbService } from "fbase";
 import SidebarComponents from "./SidebarComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faPlus, faUserGear } from "@fortawesome/free-solid-svg-icons";
-import Home from "../routes/Home";
+import Edit from "../routes/Edit";
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ userObj }) => {
   const [categorys, setCategorys] = useState([]);
   const [newCategory, setNewCategory] = useState("");
-  const [ca, setCa] = useState("모든 Todo");
+  const [ca, setCa] = useState("카테고리 수정");
   const [mode, setMode] = useState("all");
 
   useEffect(() => {
@@ -58,35 +58,37 @@ const Sidebar = ({ userObj }) => {
 
   return (
     <div className="home">
-      <Home userObj={userObj} onv={ca} mode={mode} />
-
+      <Edit userObj={userObj} onv={ca} mode={mode} />
       <div className="sidebar">
         <div className="categoryContainer">
           <div className="categoryHeaderContainer">
             <div className="listHeader">
-              <li style={{ padding: "10px", fontWeight: "700" }}>카테고리</li>
+              <li style={{ padding: "10px", fontWeight: "700" }}>
+                카테고리(수정)
+              </li>
             </div>
 
-            <Link to="/edit">
+            <Link to="/">
               <button className="settingBtn">
                 <FontAwesomeIcon icon={faGear} style={{ color: "#393939" }} />
               </button>
             </Link>
           </div>
-
-          <button className="categoryBtn" onClick={onModeSet} name="allMode">
-            모든 Todo
-          </button>
-          {categorys.map((category) => (
-            <input
-              className="categoryBtn"
-              type="submit"
-              key={category.id}
-              text={category.ca}
-              value={category.ca}
-              onClick={onCategorySet}
-            />
-          ))}
+          <div className="categoryBtnContainer">
+            <button className="categoryBtn" onClick={onModeSet} name="allMode">
+              모든 Todo
+            </button>
+            {categorys.map((category) => (
+              <input
+                className="categoryBtn"
+                type="submit"
+                key={category.id}
+                text={category.ca}
+                value={category.ca}
+                onClick={onCategorySet}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
