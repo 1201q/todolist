@@ -10,11 +10,20 @@ const TodoComponents = ({
   todoId,
   tododone,
   todoUntil,
+  todoCategory,
   allEditing,
+  categorys,
 }) => {
   const [done, setDone] = useState(tododone);
   const [editing, setEditing] = useState(allEditing);
   const [editingTodo, setEditingTodo] = useState(todoText);
+  const [editingCategory, setEditingCategory] = useState(todoCategory);
+  const [editingDate, setEditingDate] = useState(
+    new Date().toISOString().substring(0, 10)
+  );
+  const [editingTime, setEditingTime] = useState(
+    `${new Date(todoUntil).getHours()}:${new Date(todoUntil).getMinutes()}`
+  );
 
   let today = new Date().getTime();
 
@@ -26,6 +35,18 @@ const TodoComponents = ({
     Math.ceil(((todoUntil - today) / 1000 / 3600) * 60) - hour * 60
   );
   const [msg, setMsg] = useState("");
+
+  // 날짜 수정
+
+  console.log(categorys);
+
+  console.log(new Date(todoUntil).getMonth() + 1);
+  console.log(new Date(todoUntil).getDate());
+  console.log(
+    `${new Date(todoUntil).getHours()}:${new Date(todoUntil).getMinutes()}`
+  );
+  console.log(new Date(todoUntil).getMinutes());
+  console.log(new Date().toISOString().substring(0, 10));
 
   useEffect(() => {
     setHour(Math.floor((todoUntil - today) / 1000 / 3600));
@@ -42,15 +63,27 @@ const TodoComponents = ({
   }, [allEditing]);
 
   const onChange = (event) => {
-    setEditingTodo(event.target.value);
+    if (event.target.name === "text") {
+      setEditingTodo(event.target.value);
+    } else if (event.target.name === "category") {
+      setEditingCategory(event.target.value);
+    } else if (event.target.name === "date") {
+      setEditingDate(event.target.value);
+    } else if (event.target.name === "time") {
+      setEditingTime(event.target.value);
+    }
   };
 
   const onEditSubmit = async (event) => {
     event.preventDefault();
     await dbService.doc(`${userObj.uid}/${todoId}`).update({
       text: editingTodo,
+      category: editingCategory,
+      until: new Date(`${editingDate} ${editingTime}`).getTime(),
     });
     onEditBtnClick();
+    console.log(editingDate, editingTime);
+    console.log(new Date(`${editingDate} ${editingTime}`).getTime());
   };
 
   const onEditBtnClick = () => {
@@ -107,6 +140,7 @@ const TodoComponents = ({
             <input
               type="text"
               defaultValue={editingTodo}
+              name="text"
               onChange={onChange}
               className={editing ? "editInputdisabled" : "editInputabled"}
               disabled={editing}
@@ -153,6 +187,36 @@ const TodoComponents = ({
             <li className="remainingTime">{msg}</li>
           </div>
         ) : null}
+        {editing ? null : (
+          <div className="selectEditContainer">
+            <input
+              type="date"
+              name="date"
+              onChange={onChange}
+              value={editingDate}
+            />
+            <input
+              type="time"
+              name="time"
+              onChange={onChange}
+              value={editingTime}
+            />
+            <select className="select" name="category" onChange={onChange}>
+              <option value="">{editingCategory}</option>
+              <option value="기본">기본 카테고리</option>
+              {categorys.map((category) => (
+                <option
+                  className="selectOption"
+                  key={category.id}
+                  value={category.ca}
+                >
+                  {category.ca}
+                </option>
+              ))}
+            </select>
+            {/*  */}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -228,7 +228,9 @@ const Home = ({ userObj, onv, mode }) => {
                 todoId={todo.id}
                 tododone={todo.done}
                 todoUntil={todo.until}
+                todoCategory={todo.category}
                 allEditing={editing}
+                categorys={categorys}
               />
             ))}
           </div>
@@ -244,7 +246,9 @@ const Home = ({ userObj, onv, mode }) => {
                   todoId={todo.id}
                   tododone={todo.done}
                   todoUntil={todo.until}
+                  todoCategory={todo.category}
                   allEditing={editing}
+                  categorys={categorys}
                 />
               ))}
           </div>
