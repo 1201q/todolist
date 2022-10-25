@@ -63,7 +63,7 @@ const Sidebar = ({ userObj }) => {
         <div className="categoryContainer">
           <div className="categoryHeaderContainer">
             <div className="listHeader">
-              <li style={{ padding: "10px", fontWeight: "700" }}>
+              <li style={{ padding: "7px 0px", fontWeight: "700" }}>
                 카테고리(수정)
               </li>
             </div>

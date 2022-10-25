@@ -64,14 +64,18 @@ const Sidebar = ({ userObj }) => {
         <div className="categoryContainer">
           <div className="categoryHeaderContainer">
             <div className="listHeader">
-              <li style={{ padding: "10px", fontWeight: "700" }}>카테고리</li>
+              <li style={{ padding: "7px 0px", fontWeight: "700" }}>
+                카테고리
+              </li>
             </div>
 
-            <Link to="/edit">
-              <button className="settingBtn">
-                <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
-              </button>
-            </Link>
+            <div className="editHeader">
+              <Link to="/edit">
+                <button className="settingBtn">
+                  <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
+                </button>
+              </Link>
+            </div>
           </div>
 
           <button className="categoryBtn" onClick={onModeSet} name="allMode">

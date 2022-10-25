@@ -179,20 +179,27 @@ const Home = ({ userObj, onv, mode }) => {
 
         <div
           className="buttonContainer"
-          style={open ? { marginTop: "0px" } : null}
+          style={open ? { marginTop: "1px" } : null}
         >
-          <button onClick={onContainerOpen}>
+          <button
+            onClick={onContainerOpen}
+            style={{
+              backgroundColor: "white",
+              border: "3px solid rgb(255, 68, 68)",
+            }}
+            className="backBtn"
+          >
             {open ? (
               <FontAwesomeIcon
                 icon={faAngleUp}
-                size="3x"
-                style={{ color: "white" }}
+                size="2x"
+                style={{ color: "rgb(255, 68, 68)" }}
               />
             ) : (
               <FontAwesomeIcon
                 icon={faPlus}
-                size="3x"
-                style={{ color: "white" }}
+                size="2x"
+                style={{ color: "rgb(255, 68, 68) " }}
               />
             )}
           </button>
@@ -231,7 +238,13 @@ const Home = ({ userObj, onv, mode }) => {
         </div>
       </div>
       <Link to="/">
-        <button className="backBtn">
+        <button
+          className="realbackBtn"
+          style={{
+            backgroundColor: "white",
+            border: "3px solid rgb(255, 68, 68)",
+          }}
+        >
           <FontAwesomeIcon
             icon={faArrowLeft}
             size="2x"

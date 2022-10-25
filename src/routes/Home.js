@@ -16,14 +16,14 @@ const Home = ({ userObj, onv, mode }) => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [categorys, setCategorys] = useState([]);
-  const [newCategory, setNewCategory] = useState();
+  const [newCategory, setNewCategory] = useState("");
 
   // 시간
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   const [minDate, setminDate] = useState(
     new Date().toISOString().substring(0, 10)
   );
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState("23:59");
 
   // 상태
   const [re, setRe] = useState(false);
@@ -113,8 +113,6 @@ const Home = ({ userObj, onv, mode }) => {
     setOpen(!open);
   };
 
-  // https://jsikim1.tistory.com/195
-
   return (
     <div className="main">
       <div className="contentsContainer">
@@ -151,8 +149,9 @@ const Home = ({ userObj, onv, mode }) => {
             <input
               type="time"
               name="time"
+              key="inputTime"
               onChange={onChange}
-              value={time}
+              defaultValue={time}
               required
             />
 
@@ -160,9 +159,9 @@ const Home = ({ userObj, onv, mode }) => {
               className="select"
               name="select"
               onChange={onChange}
-              required
+              defaultValue="기본"
             >
-              <option value="">카테고리를 선택하세요.</option>
+              <option value="없음">카테고리를 선택하세요.</option>
               <option value="기본">기본 카테고리</option>
               {categorys.map((category) => (
                 <option
@@ -183,19 +182,22 @@ const Home = ({ userObj, onv, mode }) => {
         >
           <button
             className="backBtn"
+            style={{
+              backgroundColor: "white",
+              border: "3px solid rgb(255, 68, 68)",
+            }}
             onClick={onContainerOpen}
-            style={{ backgroundColor: "white" }}
           >
             {open ? (
               <FontAwesomeIcon
                 icon={faAngleUp}
-                size="3x"
+                size="2x"
                 style={{ color: "rgb(255, 68, 68)" }}
               />
             ) : (
               <FontAwesomeIcon
                 icon={faPlus}
-                size="3x"
+                size="2x"
                 style={{ color: "rgb(255, 68, 68)" }}
               />
             )}

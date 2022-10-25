@@ -1,11 +1,12 @@
 @media screen and (min-width: 801px) {
   .sidebar {
     width: 300px;
-    height: 90vh;
+    height: 100%;
     order: 1;
-    margin-left: 15px;
-    margin-top: 20px;
-    background-color: rgba(40, 40, 40, 0.89);
+    margin-left: 50px;
+    margin-top: 25px;
+    background-color: rgba(24, 24, 24, 0.384);
+    padding-bottom: 20px;
     color: white;
     border: none;
     border-radius: 20px;
@@ -20,7 +21,12 @@
 
   .listHeader {
     width: 100%;
-    padding-left: 25px;
+  }
+  .editHeader a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
   .categoryInputContainer {
@@ -59,12 +65,16 @@
   .categoryHeaderContainer {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    padding-bottom: 5px;
+    margin: 0px 10px;
+    margin-bottom: 15px;
   }
 
   .settingBtn {
     border: none;
     cursor: pointer;
-    margin-right: 20px;
+
     background: none;
   }
 
@@ -78,14 +88,14 @@
     margin-bottom: 5px;
     background: none;
     font-size: 1rem;
-    font-weight: 400;
-    color: white;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.831);
     -webkit-tap-highlight-color: transparent;
   }
 
   .categoryBtn:hover {
     cursor: pointer;
-    background-color: rgba(255, 68, 68, 0.728);
+    background-color: rgba(255, 68, 68, 0.9);
     color: white;
     transition: 0.2s;
   }

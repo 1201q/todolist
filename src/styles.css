@@ -7,7 +7,7 @@ body {
   color: rgb(31, 31, 31);
   font-family: 나눔고딕, "NanumGothic", Nanum Gothic, sans-serif;
   /* background-color: rgba(239, 239, 239, 0.612); */
-  background-color: rgb(255, 68, 68);
+  background-color: rgb(255, 68, 68, 0.85);
 }
 
 body svg {
@@ -152,7 +152,7 @@ body button {
   .sidebar {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 68, 68);
+    background-color: rgb(255, 68, 68, 0.85);
   }
 
   .listHeader {
@@ -160,39 +160,40 @@ body button {
   }
 
   .categoryContainer {
-    padding: 0px 0px 0px 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
     overflow: scroll;
     overflow: auto;
     white-space: nowrap;
     display: flex;
     align-items: center;
-
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.532); */
+    padding: auto;
     border: none;
   }
 
   .categoryBtn {
-    height: 41px;
-    padding: 0px 10px;
+    height: 30px;
+    padding: 0px 15px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     background: none;
-    font-size: 0.9rem;
-    font-weight: 200;
+    font-size: 1rem;
+    font-weight: 500;
     background-color: none;
     color: rgb(255, 255, 255);
-    margin: 0px 5px;
   }
 
   .categoryBtn:hover {
-    border-bottom: 3px solid rgb(255, 255, 255);
+    background-color: WHITE;
+    color: rgb(255, 68, 68);
   }
 
   .categoryBtn:not(:hover) {
     border: none;
+  }
+
+  .categoryContainer {
+    height: 44px;
   }
 
   .settingBtn {
@@ -201,10 +202,6 @@ body button {
     cursor: pointer;
     padding: 0px 10px 0px 20px;
     color: rgb(45, 45, 45);
-  }
-
-  .categoryBtnContainer {
-    display: flex;
   }
 
   .categoryContainer::-webkit-scrollbar {

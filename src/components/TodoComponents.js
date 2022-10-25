@@ -38,15 +38,15 @@ const TodoComponents = ({
 
   // 날짜 수정
 
-  console.log(categorys);
+  // console.log(categorys);
 
-  console.log(new Date(todoUntil).getMonth() + 1);
-  console.log(new Date(todoUntil).getDate());
-  console.log(
-    `${new Date(todoUntil).getHours()}:${new Date(todoUntil).getMinutes()}`
-  );
-  console.log(new Date(todoUntil).getMinutes());
-  console.log(new Date().toISOString().substring(0, 10));
+  // console.log(new Date(todoUntil).getMonth() + 1);
+  // console.log(new Date(todoUntil).getDate());
+  // console.log(
+  //   `${new Date(todoUntil).getHours()}:${new Date(todoUntil).getMinutes()}`
+  // );
+  // console.log(new Date(todoUntil).getMinutes());
+  // console.log(new Date().toISOString().substring(0, 10));
 
   useEffect(() => {
     setHour(Math.floor((todoUntil - today) / 1000 / 3600));
@@ -82,8 +82,8 @@ const TodoComponents = ({
       until: new Date(`${editingDate} ${editingTime}`).getTime(),
     });
     onEditBtnClick();
-    console.log(editingDate, editingTime);
-    console.log(new Date(`${editingDate} ${editingTime}`).getTime());
+    // console.log(editingDate, editingTime);
+    // console.log(new Date(`${editingDate} ${editingTime}`).getTime());
   };
 
   const onEditBtnClick = () => {
