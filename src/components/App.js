@@ -36,7 +36,7 @@ function App() {
             size={50}
             lineWeight={8}
             speed={3}
-            color="black"
+            color="white"
           />
         </div>
       )}

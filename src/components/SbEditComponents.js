@@ -44,14 +44,6 @@ const SbEditComponents = ({
     }
   };
 
-  // const onCheck = async (event) => {
-  //   event.preventDefault();
-  //   setDone(!done);
-  //   await dbService.doc(`C--${userObj.uid}/${todoId}`).update({
-  //     done: !done,
-  //   });
-  // };
-
   return (
     <div className="todo">
       {/* <div className="checkboxContainer">

@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.5px solid #f9f9f961;
-  background-color: rgb(255, 68, 68);
-  padding: 7px 50px;
+  /* border-bottom: 0.5px solid #f9f9f961; */
+  padding: 10px 50px;
+  padding-bottom: 20px;
 }
 
 .header h3 {

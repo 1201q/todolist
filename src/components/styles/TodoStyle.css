@@ -3,7 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  border: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+  border-radius: 10px;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffffff;
 }
 
 .newTodoContainerClose {
@@ -53,12 +60,13 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 0px;
-  border-bottom: none;
+  border-bottom: 2px solid rgb(255, 255, 255);
   margin-bottom: 15px;
 }
 
 .controlContainerCategory {
   display: flex;
+  color: white;
   align-items: center;
   justify-content: center;
   font-size: 25px;
@@ -70,16 +78,13 @@
   align-items: center;
   width: 100%;
   height: 45px;
-  background-color: none;
+  background-color: rgb(255, 255, 255);
   border: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
   border-radius: 10px;
-  padding: 12px 10px;
-  margin-bottom: 5px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
   margin-left: -10px;
-}
-
-.todo:hover {
-  background-color: rgba(145, 145, 145, 0.08);
 }
 
 .container {
@@ -116,16 +121,17 @@
 }
 
 .inputContainer {
-  width: 100%;
+  width: 90%;
   border-bottom: 1px solid #5c4d4d61;
   display: flex;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
 .selectContainer {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 30px;
   padding: 5px;
@@ -135,10 +141,11 @@
 .selectEditContainer {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   border-radius: 30px;
   padding: 3px 0px;
+
   background: none;
 }
 
@@ -236,7 +243,7 @@
   background: none;
   width: 100%;
   border: none;
-  border-radius: 3px;
+  border-radius: 20px;
   padding: 0px 0px 1px 2px;
   margin-right: 5px;
   font-size: 1rem;
@@ -248,9 +255,10 @@
   width: 100%;
   background-color: rgba(222, 222, 222, 0.185);
   border: none;
-  padding: 0px 0px 1px 2px;
+  padding: 0px 0px 1px 10px;
   margin-right: 5px;
   font-size: 1rem;
+  border-radius: 5px;
   font-weight: 200;
   color: #393939;
 }
@@ -303,6 +311,21 @@ input[type="checkbox"] {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E");
 }
 
+.backBtn {
+  position: fixed;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  bottom: 40px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+}
+.backBtn:hover {
+  background-color: rgb(215, 215, 215);
+  transition: 0.3s;
+}
+
 @media screen and (max-width: 520px) {
   .newTodoInput {
     font-size: 1.5rem;
@@ -314,5 +337,22 @@ input[type="checkbox"] {
 
   .todoContainer {
     width: 90%;
+  }
+
+  .inputContainer {
+    width: 90%;
+  }
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: yellow;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  .newTodoContainer {
+    width: 70%;
   }
 }

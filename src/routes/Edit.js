@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { authService, dbService, storageService } from "fbase";
 import moment, { min } from "moment";
 import Sidebar from "components/Sidebar";
-
+import { Link } from "react-router-dom";
 import SbEditComponents from "components/SbEditComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +11,8 @@ import {
   faPlus,
   faPen,
   faRotateRight,
+  faBackward,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ userObj, onv, mode }) => {
@@ -184,13 +186,13 @@ const Home = ({ userObj, onv, mode }) => {
               <FontAwesomeIcon
                 icon={faAngleUp}
                 size="3x"
-                style={{ color: "#393939" }}
+                style={{ color: "white" }}
               />
             ) : (
               <FontAwesomeIcon
                 icon={faPlus}
                 size="3x"
-                style={{ color: "#393939" }}
+                style={{ color: "white" }}
               />
             )}
           </button>
@@ -202,14 +204,14 @@ const Home = ({ userObj, onv, mode }) => {
                 <FontAwesomeIcon
                   icon={faRotateRight}
                   size="2x"
-                  style={{ color: "#393939" }}
+                  style={{ color: "white" }}
                 />
               </button>
               <button onClick={onEditRemove}>
                 <FontAwesomeIcon
                   icon={faPen}
                   size="2x"
-                  style={{ color: "#393939" }}
+                  style={{ color: "white" }}
                 />
               </button>
             </div>
@@ -228,6 +230,15 @@ const Home = ({ userObj, onv, mode }) => {
           ))}
         </div>
       </div>
+      <Link to="/">
+        <button className="backBtn">
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            size="2x"
+            style={{ color: "rgb(255, 68, 68)" }}
+          />
+        </button>
+      </Link>
     </div>
   );
 };

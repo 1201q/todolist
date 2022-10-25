@@ -181,18 +181,22 @@ const Home = ({ userObj, onv, mode }) => {
           className="buttonContainer"
           style={open ? { marginTop: "0px" } : null}
         >
-          <button onClick={onContainerOpen}>
+          <button
+            className="backBtn"
+            onClick={onContainerOpen}
+            style={{ backgroundColor: "white" }}
+          >
             {open ? (
               <FontAwesomeIcon
                 icon={faAngleUp}
                 size="3x"
-                style={{ color: "#393939" }}
+                style={{ color: "rgb(255, 68, 68)" }}
               />
             ) : (
               <FontAwesomeIcon
                 icon={faPlus}
                 size="3x"
-                style={{ color: "#393939" }}
+                style={{ color: "rgb(255, 68, 68)" }}
               />
             )}
           </button>
@@ -204,14 +208,14 @@ const Home = ({ userObj, onv, mode }) => {
                 <FontAwesomeIcon
                   icon={faRotateRight}
                   size="2x"
-                  style={{ color: "#393939" }}
+                  style={{ color: "white" }}
                 />
               </button>
               <button onClick={onEditRemove}>
                 <FontAwesomeIcon
                   icon={faPen}
                   size="2x"
-                  style={{ color: "#393939" }}
+                  style={{ color: "white" }}
                 />
               </button>
             </div>
@@ -254,7 +258,6 @@ const Home = ({ userObj, onv, mode }) => {
           </div>
         )}
       </div>
-      <Toast />
     </div>
   );
 };

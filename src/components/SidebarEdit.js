@@ -70,7 +70,7 @@ const Sidebar = ({ userObj }) => {
 
             <Link to="/">
               <button className="settingBtn">
-                <FontAwesomeIcon icon={faGear} style={{ color: "#393939" }} />
+                <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
               </button>
             </Link>
           </div>
