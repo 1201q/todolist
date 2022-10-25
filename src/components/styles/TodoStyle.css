@@ -87,6 +87,21 @@
   margin-left: -10px;
 }
 
+.donetodo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  background-color: rgba(222, 222, 222, 0.6);
+  border: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+  border-radius: 10px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  margin-left: -10px;
+  transition: 1s;
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -331,7 +346,7 @@ input[type="checkbox"] {
   position: fixed;
   border: none;
   border-radius: 100px;
-
+  cursor: pointer;
   bottom: 40px;
   right: 30px;
   width: 50px;

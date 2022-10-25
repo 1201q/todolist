@@ -179,7 +179,7 @@ const Home = ({ userObj, onv, mode }) => {
 
         <div
           className="buttonContainer"
-          style={open ? { marginTop: "1px" } : null}
+          style={open ? { marginTop: "0px" } : null}
         >
           <button
             onClick={onContainerOpen}

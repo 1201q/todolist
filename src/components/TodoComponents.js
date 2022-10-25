@@ -119,7 +119,7 @@ const TodoComponents = ({
   };
 
   return (
-    <div className="todo">
+    <div className={tododone ? "donetodo" : "todo"}>
       <div className="checkboxContainer">
         <input
           type="checkbox"
@@ -182,7 +182,7 @@ const TodoComponents = ({
             )}
           </form>
         </div>
-        {editing ? (
+        {!tododone && editing ? (
           <div className="msgContainer">
             <li className="remainingTime">{msg}</li>
           </div>
@@ -214,7 +214,6 @@ const TodoComponents = ({
                 </option>
               ))}
             </select>
-            {/*  */}
           </div>
         )}
       </div>

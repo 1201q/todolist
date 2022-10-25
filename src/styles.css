@@ -152,7 +152,7 @@ body button {
   .sidebar {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 68, 68, 0.85);
+    background: none;
   }
 
   .listHeader {

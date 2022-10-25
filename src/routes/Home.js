@@ -35,7 +35,7 @@ const Home = ({ userObj, onv, mode }) => {
   useEffect(() => {
     dbService
       .collection(`${userObj.uid}`)
-      .orderBy("until")
+      .orderBy("done")
       .onSnapshot((snapshot) => {
         const todosArray = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -180,29 +180,6 @@ const Home = ({ userObj, onv, mode }) => {
           className="buttonContainer"
           style={open ? { marginTop: "0px" } : null}
         >
-          <button
-            className="backBtn"
-            style={{
-              backgroundColor: "white",
-              border: "3px solid rgb(255, 68, 68)",
-            }}
-            onClick={onContainerOpen}
-          >
-            {open ? (
-              <FontAwesomeIcon
-                icon={faAngleUp}
-                size="2x"
-                style={{ color: "rgb(255, 68, 68)" }}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faPlus}
-                size="2x"
-                style={{ color: "rgb(255, 68, 68)" }}
-              />
-            )}
-          </button>
-
           <div className="controlContainer">
             <div className="controlContainerCategory">{onv}</div>
             <div>
@@ -260,6 +237,28 @@ const Home = ({ userObj, onv, mode }) => {
           </div>
         )}
       </div>
+      <button
+        className="backBtn"
+        style={{
+          backgroundColor: "white",
+          border: "3px solid rgb(255, 68, 68)",
+        }}
+        onClick={onContainerOpen}
+      >
+        {open ? (
+          <FontAwesomeIcon
+            icon={faAngleUp}
+            size="2x"
+            style={{ color: "rgb(255, 68, 68)" }}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faPlus}
+            size="2x"
+            style={{ color: "rgb(255, 68, 68)" }}
+          />
+        )}
+      </button>
     </div>
   );
 };
