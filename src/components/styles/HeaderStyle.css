@@ -3,8 +3,9 @@
   justify-content: space-between;
   align-items: center;
   /* border-bottom: 0.5px solid #f9f9f961; */
-  padding: 15px 50px;
-  padding-bottom: 20px;
+  padding: 10px 50px;
+  padding-bottom: 10px;
+  background-color: rgb(255, 81, 81);
 }
 
 .header h3 {
@@ -36,32 +37,33 @@
 }
 
 .userHi__text {
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 600;
   color: white;
 }
 
 .userHi button {
   display: flex;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 81, 81);
   color: rgb(255, 255, 255);
   font-size: 15px;
   border-radius: 3px;
-  padding: 3px 7px;
+  padding: 3px 0px;
   border: none;
   color: rgb(68, 68, 68);
   cursor: pointer;
   font-weight: 600;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
-.userHi button:hover {
-  background-color: rgb(243, 243, 243);
+.userHi button svg {
+  width: 25px;
+  height: 25px;
 }
 
 @media screen and (max-width: 520px) {
   .header {
-    padding: 15px 30px;
+    padding: 8px 30px;
   }
 
   .userHi__text {

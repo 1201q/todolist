@@ -1,28 +1,39 @@
 @media screen and (min-width: 801px) {
   .sidebar {
     width: 350px;
-    height: 100%;
+    height: 100vw;
     order: 1;
-    margin-left: 50px;
-    margin-top: 25px;
-    background-color: rgba(24, 24, 24, 0.384);
+    background-color: rgba(42, 42, 42, 1);
     padding-bottom: 20px;
+    margin-bottom: 10px;
     color: white;
     border: none;
-    border-radius: 20px;
     list-style: none;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     -webkit-tap-highlight-color: transparent;
   }
 
+  .sidebar:hover {
+    background-color: rgb(255, 94, 94);
+    transition: background 0.3s;
+  }
+
+  .sidebar:not(:hover) {
+    background-color: rgba(42, 42, 42, 0.9);
+    transition: background 0.3s;
+  }
+
   .listHeader {
+    display: flex;
+    align-items: center;
     width: 100%;
   }
-  .editHeader a {
+  .editHeader a,
+  .settingBtn {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -74,8 +85,17 @@
   .settingBtn {
     border: none;
     cursor: pointer;
-
     background: none;
+  }
+
+  .settingBtn:hover {
+    transform: scale(1.5);
+    transition: 0.2s;
+  }
+
+  .settingBtn:not(hover) {
+    transform: scale(1);
+    transition: 0.2s;
   }
 
   .categoryBtn {
@@ -87,9 +107,9 @@
     cursor: pointer;
     margin-bottom: 5px;
     background: none;
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.831);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -97,6 +117,7 @@
     cursor: pointer;
     background-color: rgba(255, 68, 68, 0.9);
     color: white;
+    transform: scale(1.05);
     transition: 0.2s;
   }
 

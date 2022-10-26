@@ -1,16 +1,18 @@
+li {
+  list-style: none;
+}
+
 .newTodoContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 2px 2px 2px 2px;
   border-radius: 10px;
   width: 90%;
-  margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
-  background-color: #ffffff;
 }
 
 .newTodoContainerClose {
@@ -23,11 +25,16 @@
   background: none;
   padding: 10px 0px;
   font-size: 2rem;
-  font-weight: 100;
+  font-weight: 500;
   text-align: center;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  color: rgb(75, 75, 75);
   outline: none;
+}
+
+.newTodoInput::placeholder {
+  color: rgb(129, 129, 129);
 }
 
 .newTodoBtn {
@@ -66,11 +73,26 @@
 
 .controlContainerCategory {
   display: flex;
-  color: white;
+  color: rgb(45, 45, 45);
   align-items: center;
   justify-content: center;
-  font-size: 34px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.controlContainerBtn {
+  display: flex;
+  align-items: center;
+}
+
+.controlContainerBtn li {
+  color: red;
   font-weight: 800;
+  margin-right: 10px;
+}
+
+.saveText {
+  transition: 2s;
 }
 
 .todo {
@@ -78,9 +100,9 @@
   align-items: center;
   width: 100%;
   height: 45px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(235, 235, 235, 0.221);
   border: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 2px 2px 2px 2px;
   border-radius: 10px;
   padding: 10px 10px;
   margin-bottom: 10px;
@@ -94,7 +116,7 @@
   height: 45px;
   background-color: rgba(222, 222, 222, 0.6);
   border: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 2px 4px 4px 2px;
   border-radius: 10px;
   padding: 10px 10px;
   margin-bottom: 10px;
@@ -140,6 +162,8 @@
   border: none;
   display: flex;
   font-weight: 600;
+  padding: 0px 20px;
+  border-radius: 10px;
 }
 
 .selectContainer {
@@ -170,7 +194,7 @@
   border: none;
   border-radius: 30px;
   color: rgb(0, 0, 0);
-  background-color: rgba(180, 180, 180, 0.205);
+  background-color: rgba(199, 199, 199, 0.4);
   padding: 2px 8px;
   margin: 0px 5px;
   outline: none;
@@ -184,7 +208,7 @@
   border: none;
   border-radius: 30px;
   color: rgb(0, 0, 0);
-  background-color: rgba(180, 180, 180, 0.205);
+  background-color: rgba(199, 199, 199, 0.4);
   padding: 2px 8px;
   margin-right: 5px;
   outline: none;
@@ -197,9 +221,9 @@
   font-size: 12px;
   font-weight: 400;
   border: none;
+  background-color: rgba(199, 199, 199, 0.4);
   border-radius: 30px;
   margin: 0px 5px;
-  background-color: rgba(180, 180, 180, 0.205);
   outline: none;
 }
 
@@ -212,7 +236,7 @@
   border: none;
   border-radius: 30px;
   margin: 0px 0px;
-  background-color: rgba(180, 180, 180, 0.205);
+  background-color: rgba(199, 199, 199, 0.4);
   outline: none;
 }
 
@@ -231,7 +255,7 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 70px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .todoContainer {
@@ -264,7 +288,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(52, 52, 52);
+  background-color: rgba(52, 52, 52);
   color: white;
   padding: 0px 5px 0px 5px;
   margin-top: 4px;
@@ -277,7 +301,7 @@
   border-radius: 20px;
   padding: 0px 0px 1px 2px;
   margin-right: 5px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 200;
   color: black;
 }
@@ -288,7 +312,7 @@
   border: none;
   padding: 0px 0px 1px 10px;
   margin-right: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   font-weight: 200;
   color: #393939;
@@ -383,15 +407,44 @@ input[type="checkbox"] {
   }
 }
 
-@media (hover: hover) {
-  a:hover {
-    color: yellow;
-    text-decoration: underline;
-  }
-}
-
 @media screen and (min-width: 801px) {
   .newTodoContainer {
     width: 70%;
+  }
+  .backBtn:hover,
+  .realbackBtn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 68, 68, 0.9);
+    color: white;
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+
+  .backBtn:not(:hover),
+  .realbackBtn:not(:hover) {
+    transform: scale(1);
+    transition: 0.2s;
+  }
+
+  .controlContainerBtn button:hover {
+    transform: rotate(10deg);
+    transition: 0.2s;
+  }
+
+  .controlContainerBtn button:not(hover) {
+    transform: scale(1);
+    transition: 0.2s;
+  }
+
+  .todo:hover,
+  .donetodo:hover {
+    transform: scale(1.005);
+    transition: 0.2s;
+  }
+
+  .todo:not(:hover),
+  .donetodo:not(:hover) {
+    transform: scale(1);
+    transition: 0.2s;
   }
 }

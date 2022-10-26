@@ -211,14 +211,14 @@ const Home = ({ userObj, onv, mode }) => {
                 <FontAwesomeIcon
                   icon={faRotateRight}
                   size="2x"
-                  style={{ color: "white" }}
+                  style={{ color: "rgb(45, 45, 45)" }}
                 />
               </button>
               <button onClick={onEditRemove}>
                 <FontAwesomeIcon
                   icon={faPen}
                   size="2x"
-                  style={{ color: "white" }}
+                  style={{ color: "rgb(45, 45, 45)" }}
                 />
               </button>
             </div>

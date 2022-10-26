@@ -7,7 +7,7 @@ body {
   color: rgb(31, 31, 31);
   font-family: 나눔고딕, "NanumGothic", Nanum Gothic, sans-serif;
   /* background-color: rgba(239, 239, 239, 0.612); */
-  background-color: rgb(255, 68, 68, 0.85);
+  background-color: white;
 }
 
 body svg {
@@ -167,6 +167,7 @@ body button {
     align-items: center;
     padding: auto;
     border: none;
+    background-color: rgb(255, 81, 81);
   }
 
   .categoryBtn {

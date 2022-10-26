@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { authService, dbService, storageService } from "fbase";
 import moment, { min } from "moment";
 import TodoComponents from "components/TodoComponents";
@@ -9,6 +9,8 @@ import {
   faPlus,
   faPen,
   faRotateRight,
+  faList,
+  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 import Toast from "components/Toast";
 
@@ -29,6 +31,7 @@ const Home = ({ userObj, onv, mode }) => {
   const [re, setRe] = useState(false);
   const [editing, setEditing] = useState(true);
   const [open, setOpen] = useState(false);
+  const tInput = useRef(null);
 
   // 모드
 
@@ -111,6 +114,11 @@ const Home = ({ userObj, onv, mode }) => {
 
   const onContainerOpen = () => {
     setOpen(!open);
+    ontestClick();
+  };
+
+  const ontestClick = () => {
+    tInput.current.focus();
   };
 
   return (
@@ -127,6 +135,7 @@ const Home = ({ userObj, onv, mode }) => {
               name="input"
               value={newTodo}
               className="newTodoInput"
+              ref={tInput}
               placeholder="오늘 할 일을 입력하세요."
             />
             <button type="submit" className="newTodoBtn">
@@ -182,21 +191,26 @@ const Home = ({ userObj, onv, mode }) => {
         >
           <div className="controlContainer">
             <div className="controlContainerCategory">{onv}</div>
-            <div>
-              <button onClick={onReload}>
-                <FontAwesomeIcon
-                  icon={faRotateRight}
-                  size="2x"
-                  style={{ color: "white" }}
-                />
-              </button>
-              <button onClick={onEditRemove}>
-                <FontAwesomeIcon
-                  icon={faPen}
-                  size="2x"
-                  style={{ color: "white" }}
-                />
-              </button>
+            <div className="controlContainerBtn">
+              {editing ? (
+                <button onClick={onEditRemove}>
+                  <FontAwesomeIcon
+                    icon={faPen}
+                    size="2x"
+                    style={{ color: "rgb(45, 45, 45)" }}
+                  />
+                </button>
+              ) : (
+                <>
+                  <button onClick={onEditRemove}>
+                    <FontAwesomeIcon
+                      icon={faSave}
+                      size="2x"
+                      style={{ color: "rgb(45, 45, 45)" }}
+                    />
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

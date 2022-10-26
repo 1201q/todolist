@@ -4,7 +4,12 @@ import styles from "./styles/SidebarStyle.css";
 import { dbService } from "fbase";
 import SidebarComponents from "./SidebarComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faPlus, faUserGear } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGear,
+  faPlus,
+  faUserGear,
+  faList,
+} from "@fortawesome/free-solid-svg-icons";
 import Home from "../routes/Home";
 import { Link } from "react-router-dom";
 
@@ -64,6 +69,10 @@ const Sidebar = ({ userObj }) => {
         <div className="categoryContainer">
           <div className="categoryHeaderContainer">
             <div className="listHeader">
+              <FontAwesomeIcon
+                icon={faList}
+                style={{ color: "white", paddingRight: "15px" }}
+              />
               <li style={{ padding: "7px 0px", fontWeight: "700" }}>
                 카테고리
               </li>
