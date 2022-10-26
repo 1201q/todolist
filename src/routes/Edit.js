@@ -207,13 +207,13 @@ const Home = ({ userObj, onv, mode }) => {
           <div className="controlContainer">
             <div className="controlContainerCategory">카테고리 수정</div>
             <div>
-              <button onClick={onReload}>
+              {/* <button onClick={onReload}>
                 <FontAwesomeIcon
                   icon={faRotateRight}
                   size="2x"
                   style={{ color: "rgb(45, 45, 45)" }}
                 />
-              </button>
+              </button> */}
               <button onClick={onEditRemove}>
                 <FontAwesomeIcon
                   icon={faPen}

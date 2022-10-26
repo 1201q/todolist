@@ -202,7 +202,7 @@ const Home = ({ userObj, onv, mode }) => {
                 </button>
               ) : (
                 <>
-                  <button onClick={onEditRemove}>
+                  <button className="onSaveBtn" onClick={onEditRemove}>
                     <FontAwesomeIcon
                       icon={faSave}
                       size="2x"

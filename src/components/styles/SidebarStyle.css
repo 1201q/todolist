@@ -3,11 +3,13 @@
     width: 350px;
     height: 100vw;
     order: 1;
-    background-color: rgba(42, 42, 42, 1);
+    background-color: #ffffff3d;
+    -webkit-box-shadow: 5px 24px 38px -16px rgba(32, 32, 32, 0.2);
+    box-shadow: 5px 24px 38px -16px rgba(32, 32, 32, 0.2);
     padding-bottom: 20px;
     margin-bottom: 10px;
-    color: white;
-    border: none;
+    color: rgb(45, 45, 45);
+    margin-top: 0px;
     list-style: none;
     font-weight: 700;
     font-size: 25px;
@@ -17,15 +19,15 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .sidebar:hover {
+  /* .sidebar:hover {
     background-color: rgb(255, 94, 94);
     transition: background 0.3s;
   }
 
   .sidebar:not(:hover) {
-    background-color: rgba(42, 42, 42, 0.9);
+    background-color: white;
     transition: background 0.3s;
-  }
+  } */
 
   .listHeader {
     display: flex;
@@ -38,6 +40,12 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+  }
+
+  .settingBtn svg {
+    width: 20px;
+    height: 20px;
+    color: rgb(45, 45, 45);
   }
 
   .categoryInputContainer {
@@ -76,9 +84,13 @@
   .categoryHeaderContainer {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgb(235, 235, 235);
+    border-bottom: 2px solid #ecedef;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
     padding-bottom: 5px;
-    margin: 0px 10px;
+    padding: 3px 10px;
+    -webkit-box-shadow: 0px 0px 5px -2px rgba(156, 156, 156, 0.8);
+    box-shadow: 0px 0px 5px -2px rgba(156, 156, 156, 0.8);
     margin-bottom: 15px;
   }
 
@@ -89,13 +101,13 @@
   }
 
   .settingBtn:hover {
-    transform: scale(1.5);
-    transition: 0.2s;
+    transform: rotate(360deg);
+    transition: 0.5s;
   }
 
   .settingBtn:not(hover) {
-    transform: scale(1);
-    transition: 0.2s;
+    transform: rotate(-360deg);
+    transition: 0.5s;
   }
 
   .categoryBtn {
@@ -108,8 +120,9 @@
     margin-bottom: 5px;
     background: none;
     font-size: 1.2rem;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
+    font-weight: 500;
+    color: rgb(45, 45, 45);
+
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -117,7 +130,9 @@
     cursor: pointer;
     background-color: rgba(255, 68, 68, 0.9);
     color: white;
-    transform: scale(1.05);
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(156, 156, 156, 0.8);
+    box-shadow: 0px 0px 8px -2px rgba(156, 156, 156, 0.8);
+    transform: scale(1.01);
     transition: 0.2s;
   }
 

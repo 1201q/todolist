@@ -6,6 +6,8 @@
   padding: 10px 50px;
   padding-bottom: 10px;
   background-color: rgb(255, 81, 81);
+  /* -webkit-box-shadow: 0px 10px 10px -0px rgba(32, 32, 32, 0.51);
+  box-shadow: 0px 3px 15px -5px rgba(32, 32, 32, 0.7); */
 }
 
 .header h3 {

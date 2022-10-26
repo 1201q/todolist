@@ -71,9 +71,13 @@ const Sidebar = ({ userObj }) => {
             <div className="listHeader">
               <FontAwesomeIcon
                 icon={faList}
-                style={{ color: "white", paddingRight: "15px" }}
+                style={{
+                  color: "rgb(45, 45, 45)",
+                  paddingRight: "10px",
+                  paddingTop: "1px",
+                }}
               />
-              <li style={{ padding: "7px 0px", fontWeight: "700" }}>
+              <li style={{ padding: "5px 0px", fontWeight: "700" }}>
                 카테고리
               </li>
             </div>
@@ -81,7 +85,7 @@ const Sidebar = ({ userObj }) => {
             <div className="editHeader">
               <Link to="/edit">
                 <button className="settingBtn">
-                  <FontAwesomeIcon icon={faGear} style={{ color: "white" }} />
+                  <FontAwesomeIcon icon={faGear} />
                 </button>
               </Link>
             </div>
