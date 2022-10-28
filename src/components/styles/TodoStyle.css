@@ -2,6 +2,10 @@ li {
   list-style: none;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .newTodoContainer {
   display: flex;
   flex-direction: column;
@@ -43,6 +47,7 @@ li {
   border: none;
   outline: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .buttonContainer {
@@ -381,6 +386,7 @@ input[type="checkbox"] {
   width: 50px;
   height: 50px;
   box-shadow: rgba(189, 181, 181, 0.2) 0px 2px 2px 0px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .realbackBtn {

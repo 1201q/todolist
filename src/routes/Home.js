@@ -193,7 +193,7 @@ const Home = ({ userObj, onv, mode }) => {
             <div className="controlContainerCategory">{onv}</div>
             <div className="controlContainerBtn">
               {editing ? (
-                <button onClick={onEditRemove}>
+                <button className="onSaveBtn" onClick={onEditRemove}>
                   <FontAwesomeIcon
                     icon={faPen}
                     size="2x"
