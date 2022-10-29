@@ -3,6 +3,7 @@ import { dbService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPen, faRemove } from "@fortawesome/free-solid-svg-icons";
 import styles from "components/styles/TodoStyle.css";
+import { Ring } from "@uiball/loaders";
 
 const TodoComponents = ({
   todoText,
@@ -13,6 +14,7 @@ const TodoComponents = ({
   todoCategory,
   allEditing,
   categorys,
+  loading,
 }) => {
   const [done, setDone] = useState(tododone);
   const [editing, setEditing] = useState(allEditing);
@@ -35,18 +37,6 @@ const TodoComponents = ({
     Math.ceil(((todoUntil - today) / 1000 / 3600) * 60) - hour * 60
   );
   const [msg, setMsg] = useState("");
-
-  // 날짜 수정
-
-  // console.log(categorys);
-
-  // console.log(new Date(todoUntil).getMonth() + 1);
-  // console.log(new Date(todoUntil).getDate());
-  // console.log(
-  //   `${new Date(todoUntil).getHours()}:${new Date(todoUntil).getMinutes()}`
-  // );
-  // console.log(new Date(todoUntil).getMinutes());
-  // console.log(new Date().toISOString().substring(0, 10));
 
   useEffect(() => {
     setHour(Math.floor((todoUntil - today) / 1000 / 3600));
@@ -119,105 +109,121 @@ const TodoComponents = ({
   };
 
   return (
-    <div className={tododone ? "donetodo" : "todo"}>
-      <div className="checkboxContainer">
-        <input
-          type="checkbox"
-          name="check"
-          value={done}
-          onChange={onCheck}
-          id={todoId}
-          checked={done}
-        />
-        <label
-          htmlFor={todoId}
-          className={done ? "checkboxCheckF" : "checkboxChecked"}
-        ></label>
-      </div>
-      <div className="container">
-        <div className="submitContainer">
-          <form onSubmit={onEditSubmit} className="formContainer">
+    <>
+      {loading ? (
+        <div className={tododone ? "donetodo" : "todo"}>
+          <div className="checkboxContainer">
             <input
-              type="text"
-              defaultValue={editingTodo}
-              name="text"
-              onChange={onChange}
-              className={editing ? "editInputdisabled" : "editInputabled"}
-              disabled={editing}
-              autoFocus
-              style={
-                done ? { textDecoration: "line-through", color: "gray" } : null
-              }
+              type="checkbox"
+              name="check"
+              value={done}
+              onChange={onCheck}
+              id={todoId}
+              checked={done}
             />
+            <label
+              htmlFor={todoId}
+              className={done ? "checkboxCheckF" : "checkboxChecked"}
+            ></label>
+          </div>
+          <div className="container">
+            <div className="submitContainer">
+              <form onSubmit={onEditSubmit} className="formContainer">
+                <input
+                  type="text"
+                  defaultValue={editingTodo}
+                  name="text"
+                  onChange={onChange}
+                  className={editing ? "editInputdisabled" : "editInputabled"}
+                  disabled={editing}
+                  autoFocus
+                  style={
+                    done
+                      ? { textDecoration: "line-through", color: "gray" }
+                      : null
+                  }
+                />
 
+                {editing ? null : (
+                  <div className="editRemoveBtnContainer">
+                    <button
+                      type="submit"
+                      className="editBtn"
+                      onClick={onEditSubmit}
+                    >
+                      {editing ? (
+                        <FontAwesomeIcon
+                          icon={faPen}
+                          size="2x"
+                          style={{ color: "#393939" }}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          size="3x"
+                          style={{ color: "rgb(41, 177, 0)" }}
+                        />
+                      )}
+                    </button>
+                    <button onClick={onDeleteBtnClick} className="removeBtn">
+                      <FontAwesomeIcon
+                        icon={faRemove}
+                        size="3x"
+                        style={{ color: "red" }}
+                      />
+                    </button>
+                  </div>
+                )}
+              </form>
+            </div>
+            {!tododone && editing ? (
+              <div className="msgContainer">
+                <li className="remainingTime">{msg}</li>
+              </div>
+            ) : null}
             {editing ? null : (
-              <div className="editRemoveBtnContainer">
-                <button
-                  type="submit"
-                  className="editBtn"
-                  onClick={onEditSubmit}
-                >
-                  {editing ? (
-                    <FontAwesomeIcon
-                      icon={faPen}
-                      size="2x"
-                      style={{ color: "#393939" }}
-                    />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      size="3x"
-                      style={{ color: "rgb(41, 177, 0)" }}
-                    />
-                  )}
-                </button>
-                <button onClick={onDeleteBtnClick} className="removeBtn">
-                  <FontAwesomeIcon
-                    icon={faRemove}
-                    size="3x"
-                    style={{ color: "red" }}
-                  />
-                </button>
+              <div className="selectEditContainer">
+                <input
+                  type="date"
+                  name="date"
+                  onChange={onChange}
+                  value={editingDate}
+                />
+                <input
+                  type="time"
+                  name="time"
+                  onChange={onChange}
+                  value={editingTime}
+                />
+                <select className="select" name="category" onChange={onChange}>
+                  <option value="">{editingCategory}</option>
+                  <option value="기본">기본 카테고리</option>
+                  {categorys.map((category) => (
+                    <option
+                      className="selectOption"
+                      key={category.id}
+                      value={category.ca}
+                    >
+                      {category.ca}
+                    </option>
+                  ))}
+                </select>
               </div>
             )}
-          </form>
+          </div>
         </div>
-        {!tododone && editing ? (
-          <div className="msgContainer">
-            <li className="remainingTime">{msg}</li>
-          </div>
-        ) : null}
-        {editing ? null : (
-          <div className="selectEditContainer">
-            <input
-              type="date"
-              name="date"
-              onChange={onChange}
-              value={editingDate}
-            />
-            <input
-              type="time"
-              name="time"
-              onChange={onChange}
-              value={editingTime}
-            />
-            <select className="select" name="category" onChange={onChange}>
-              <option value="">{editingCategory}</option>
-              <option value="기본">기본 카테고리</option>
-              {categorys.map((category) => (
-                <option
-                  className="selectOption"
-                  key={category.id}
-                  value={category.ca}
-                >
-                  {category.ca}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-      </div>
-    </div>
+      ) : (
+        <div className="todoLoading">
+          <Ring
+            className="loading"
+            size={30}
+            lineWeight={8}
+            speed={1}
+            color="gray"
+          />
+        </div>
+      )}
+    </>
   );
 };
 

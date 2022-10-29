@@ -15,6 +15,7 @@ import {
 import Toast from "components/Toast";
 
 const Home = ({ userObj, onv, mode }) => {
+  const [loading, setLoading] = useState(false);
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [categorys, setCategorys] = useState([]);
@@ -57,7 +58,18 @@ const Home = ({ userObj, onv, mode }) => {
         }));
         setCategorys(categoryArray);
       });
+    setLoading(true);
   }, []);
+
+  useEffect(() => {
+    if (todos.length === 0) {
+      console.log("로딩중..");
+      setLoading(false);
+    } else {
+      console.log("로딩완료");
+      setLoading(true);
+    }
+  }, [todos]);
 
   // 새로운 newtodo
   const onSubmit = async (event) => {
@@ -214,7 +226,6 @@ const Home = ({ userObj, onv, mode }) => {
             </div>
           </div>
         </div>
-
         {mode === "all" ? (
           <div className="todoContainer">
             {todos.map((todo) => (
@@ -228,6 +239,7 @@ const Home = ({ userObj, onv, mode }) => {
                 todoCategory={todo.category}
                 allEditing={editing}
                 categorys={categorys}
+                loading={loading}
               />
             ))}
           </div>
@@ -246,6 +258,7 @@ const Home = ({ userObj, onv, mode }) => {
                   todoCategory={todo.category}
                   allEditing={editing}
                   categorys={categorys}
+                  loading={loading}
                 />
               ))}
           </div>

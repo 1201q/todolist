@@ -35,8 +35,6 @@ const Home = ({ userObj, onv, mode }) => {
 
   // 모드
 
-  console.log();
-
   useEffect(() => {
     dbService
       .collection(`${userObj.uid}`)
